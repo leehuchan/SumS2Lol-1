@@ -56,6 +56,13 @@ private:
 	Pet* pet;
 };
 
+int& Temp()
+{
+	int aInt = 1;
+
+	return aInt;
+}
+
 int main()
 {
 	int aInt = 1;
@@ -64,7 +71,8 @@ int main()
 	ref = 3233;
 
 	// player1에서 player2로 이사
-	Player* player1 = new Player();
+	Player* player1 = new Player(std::move(Player()));
+
 	Player* player2 = new Player(std::move(*player1)); // 이동개념 : 이사
 
 	unique_ptr<Player> up = make_unique<Player>();
